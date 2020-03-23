@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         AtCoderLabelChanger
-// @version      1.0
+// @version      1.1
 // @description  提出結果をまとめるスクリプト．ついでに色も変えます．
 // @author       y-oksaku
 // @namespace    https://github.com/y-oksaku/AtCoderLabelChanger
@@ -41,6 +41,8 @@
             case 'TLE':
                 $(this).addClass('label-warning');
                 tle++;
+                break;
+            case 'WJ':
                 break;
             case 'CE':
             case 'RE':
