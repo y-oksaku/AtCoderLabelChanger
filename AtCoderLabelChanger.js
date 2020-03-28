@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         AtCoderLabelChanger
-// @version      1.1
+// @version      1.2
 // @description  提出結果をまとめるスクリプト．ついでに色も変えます．
 // @author       y-oksaku
 // @namespace    https://github.com/y-oksaku/AtCoderLabelChanger
@@ -24,30 +24,24 @@
     let tle = 0;
     let other = 0;
 
-    $('table > tbody > tr > td:not(#judge-status) > span.label').each(function () {
+    $('table > tbody > tr > td:not(#judge-status, .waiting-judge) > span.label').each(function () {
         const result = $(this).text();
-        $(this).removeClass('label-success');
-        $(this).removeClass('label-warning');
 
         switch (result) {
             case 'AC':
+                $(this).removeClass('label-success');
                 $(this).addClass('label-success');
                 ac++;
                 break;
             case 'WA':
+                $(this).removeClass('label-warning');
                 $(this).addClass('label-danger');
                 wa++;
                 break;
             case 'TLE':
-                $(this).addClass('label-warning');
                 tle++;
                 break;
-            case 'WJ':
-                break;
-            case 'CE':
-            case 'RE':
             default:
-                $(this).addClass('label-warning');
                 other++;
                 break;
         }
